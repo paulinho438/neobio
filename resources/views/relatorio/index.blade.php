@@ -1,132 +1,203 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
-    <title>@yield('title')</title>
-    
+  <?php $page_title = "Dashboard"; $page_current = 'dashboard'; ?>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link type="text/css" rel="stylesheet" href="{{url('assets/css/fontawesome.min.css')}}" />
+<link type="text/css" rel="stylesheet" href="{{url('assets/css/solid.min.css')}}" />
+<link type="text/css" rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}" />
+<link type="text/css" rel="stylesheet" href="{{url('assets/css/main.css')}}" />
+<link type="image/png" rel="shortcut icon" href="{{url('assets/img/favicon.png')}}" />
+<script type="text/javascript" defer src="{{url('assets/js/bootstrap.bundle.min.js')}}"></script>
+<title>@yield('title')</title>
+  <style>
+  </style>
 </head>
+
 <body>
-         
-  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Relatório Ponto Eletrônico</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    {{-- <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign out</a>
-      </li>
-    </ul> --}}
-  </header>
-  
-  <div class="container-fluid">
+  <nav id="Header" class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand py-0" href="{{url('/')}}"><img src="{{url('assets/img/header-logo.png')}}" width="30" height="30" /></a>
+      <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item"><a href="#" class="nav-link">Dashboard</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Domains</a></li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="#" class="nav-link">Settings</a></li>
+        <li class="nav-item"><a href="{{url('/logout')}}" class="nav-link">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="Body" class="container py-3">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{url('/relatorio/home')}}">
-                <span data-feather="home"></span>
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{url('/relatorio')}}">
-                <span data-feather="home"></span>
-                Relatórios
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file"></span>
-                Orders
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Products
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Customers
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Reports
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Integrations
-              </a>
-            </li>
-          </ul>
-  
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Adiministração</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-              <span data-feather="plus-circle"></span>
-            </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Usuários
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{url('/relatorio/gerar')}}">
-                <span data-feather="home"></span>
-                Gerar Relatório geral
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                <span data-feather="home"></span>
-                Gerar Relatório único
-              </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('/relatorio/update')}}">
-                <span data-feather="file-text"></span>
-                Atualizar Integrantes
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Grupos
-              </a>
-            </li>
-            
+      <div class="col-4">
+        <div id="DomainSwitcher" class="dropdown mb-3">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">Select a domain</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">keystroke.ca</a></li>
+            <li><a class="dropdown-item" href="#">www.handheldcontact.com</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Manage domains</a></li>
           </ul>
         </div>
-      </nav>
-  
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        {{-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          
-        </div>   --}}
+        <ul id="SeoMenu">
+          <li>
+            <a href="{{url('')}}" class="<?=$title == 'dashboard' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-dashboard.svg')}}" /></div>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="" class="<?=$title == 'keyworddensity' ? 'current' : ''?> disabled">
+              <div class="img"><img src="{{url('assets/img/menu-keyword-density.svg')}}" /></div>
+              Keyword Density
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/readabilitytest')}}" class="<?=$title == 'ReadabilityTest' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-readability.svg')}}" /></div>
+              Readability Test
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/domainauthority')}}" class="<?=$page_current == 'DomainAuthority' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-domain.svg')}}" /></div>
+              Domain Authority
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/imageanalysis')}}" class="<?=$title == 'ImageAnalysis' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-image.svg')}}" /></div>
+              Image Analysis
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/backlinkanalysis')}}" class="<?=$title == 'BackLink' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-backlink.svg')}}" /></div>
+              Backlink Analysis
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/keywordrank')}}" class="<?=$title == 'KaywordRank' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-keyword-rank.svg')}}" /></div>
+              Keyword Rank
+            </a>
+          </li>
+          <li>
+            <a href="" class="<?=$page_current == 'html' ? 'current' : ''?> disabled">
+              <div class="img"><img src="{{url('assets/img/menu-html.svg')}}" /></div>
+              HTML Validation
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/cssvalidation')}}" class="<?=$page_current == 'css' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-css.svg')}}" /></div>
+              CSS Validation
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/downtimemonitor')}}" class="<?=$title == 'downtimeMonitor' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-downtime.svg')}}" /></div>
+              Downtime Monitor
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/brokenlink')}}" class="<?=$title == 'brokenlink' ? 'current' : ''?>">
+              <div class="img"><img src="{{url('assets/img/menu-broken-link.svg')}}" /></div>
+              Broken Link Checker
+            </a>
+          </li>
+          <li>
+            <a href="" class="<?=$title == 'CrossBrowser' ? 'current' : ''?> disabled ">
+              <div class="img"><img src="{{url('assets/img/menu-browser.svg')}}" /></div>
+              Cross Browser Checker
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-8">
       @yield('content')
-      </main>
+      </div>
     </div>
   </div>
   
-    
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{url('assets/js/chart.min.js')}}"></script>
+  <script type="text/javascript">
+    var ctx = document.getElementById('RankGraph').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+    });
+    var ctx = document.getElementById('KeywordGraph').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+    });
+  </script>  
 </body>
+
 </html>

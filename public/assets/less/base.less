@@ -1,0 +1,142 @@
+// main: ../css/main.less
+/*===================================================================
+  Base stylesheet
+====================================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import (reference) 'vars.less';
+
+html {
+  height: 100%;
+  font-size: 14px;
+}
+
+body {
+  height: 100%;
+}
+
+/*===================================================================
+  Bootstrap overrides
+--------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
+  Button
+--------------------------------------------------------------------*/
+
+.btn {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &:focus,
+  &:active:focus {
+    box-shadow: none;
+  }
+}
+
+.btn-primary {
+  background-color: @color-primary;
+  border-color: transparent;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: darken(@color-primary, 5%);
+    border-color: transparent;
+  }
+}
+
+/*-------------------------------------------------------------------
+  Form
+--------------------------------------------------------------------*/
+
+.form-control {
+  &:focus {
+    border-color: #888;
+    box-shadow: none;
+  }
+}
+
+/*===================================================================
+  Components
+--------------------------------------------------------------------*/
+
+.page-title {
+  color: @color-primary;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.ribbon {
+  padding: 0.5rem 1rem;
+  background: @color-secondary-light;
+  box-shadow: 0 1px 0 #ccc;
+}
+
+/*===================================================================
+  Header
+--------------------------------------------------------------------*/
+#Header {
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+
+/*===================================================================
+  Seo Menu
+--------------------------------------------------------------------*/
+#SeoMenu {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+
+  li {
+    width: 30%;
+    margin: 0 0 15px 0;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: @color-primary;
+    text-decoration: none;
+
+    &.current .img,
+    &:hover .img {
+      background: lighten(desaturate(@color-primary, 20%), 20%);
+    }
+
+    &.disabled {
+      opacity: .5;
+      filter: saturate(0);
+      cursor: default;
+
+      &:hover .img {
+        background: #eee;
+      }
+    }
+  }
+
+  .img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    padding: 10px;
+    background: #eee;
+    transition: background-color .3s;
+
+    img {
+      width: 50px;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}

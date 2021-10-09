@@ -10,34 +10,56 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    public $timestamps = false;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name',
+        'bairro',
+        'bloqueado',
+        'bloquear_faturamento',
+        'cep',
+        'cidade',
+        'cnae',
+        'cnpj_cpf',
+        'codigo_cliente_integracao',
+        'codigo_cliente_omie',
+        'codigo_pais',
+        'complemento',
+        'contato',
+        'contribuinte',
         'email',
-        'password',
+        'endereco',
+        'endereco_numero',
+        'estado',
+        'exterior',
+        'fax_ddd',
+        'fax_numero',
+        'homepage',
+        'inativo',
+        'inscricao_estadual',
+        'inscricao_municipal',
+        'inscricao_suframa',
+        'logradouro',
+        'nif',
+        'nome_fantasia',
+        'obs_detalhadas',
+        'observacao',
+        'optante_simples_nacional',
+        'pessoa_fisica',
+        'produtor_rural',
+        'razao_social',
+        'recomendacao_atraso',
+        'tags',
+        'telefone1_ddd',
+        'telefone1_numero',
+        'telefone2_ddd',
+        'telefone2_numero',
+        'tipo_atividade',
+        'valor_limite_credito',
+        'password'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    
+    protected $hidden = ['password'];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    
 }
